@@ -1,0 +1,76 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "konyvtar",
+    "dateExported": "2024-11-05T09:37:26.324Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "7afd0d86-df17-4834-ba62-d9d25b968441",
+            "colId": "fbccf9b0-169a-4bc1-b31e-f94d03730772",
+            "containerId": "",
+            "name": "register",
+            "url": "register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-11-05T08:13:00.595Z",
+            "modified": "2024-11-05T09:33:17.492Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\"name\":\"user6\",\n\"email\":\"user6@admin.hu\",\n\"password\":\"password123\",\n\"password_confirmation\":\"password123\"}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "4442be66-3f76-47e7-8ff1-7d7a5f5728ba",
+            "colId": "fbccf9b0-169a-4bc1-b31e-f94d03730772",
+            "containerId": "",
+            "name": "loginUser",
+            "url": "login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-11-05T08:57:11.798Z",
+            "modified": "2024-11-05T09:05:35.311Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Fehér Panna\",\n  \"email\":\"bryce.oberbrunner@example.org\",\n  \"password\":\"abcde1234\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c0a990da-f94a-469f-9c07-8033fd6a2e68",
+            "colId": "fbccf9b0-169a-4bc1-b31e-f94d03730772",
+            "containerId": "",
+            "name": "lendings-copies",
+            "url": "lendings-copies",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-11-05T09:12:26.385Z",
+            "modified": "2024-11-05T09:13:53.937Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|oLMiTphtibaTdC0j30JepgGxf7QJ2qTHDaEDZGCDef2d3ce7"
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "options": {
+            "baseUrl": "http://localhost:8000/api/"
+        }
+    }
+}
