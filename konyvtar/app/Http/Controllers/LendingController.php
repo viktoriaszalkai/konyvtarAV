@@ -66,18 +66,46 @@ class LendingController extends Controller
         ->get();
     }
 
-    //Milyen könyvek vannak nálam
+    //hányszor kölcsönöztem?
+    public function lendingsCount(){
+        $user = Auth::user();
+        $lendings = DB::table("lendings as l")
+        ->where('user_id', $user->id)
+        ->count();
+        return $lendings;
+    }
 
+    //hány könyvet köcsönöztem?
+    public function lendingsCountDistinct(){
+        $user = Auth::user();
+        $lendings = DB::table("lendings as l")
+        ->join('copies as c', 'l.copy_id', '=', 'c.copy_id')
+        ->where('user_id', $user->id)
+        ->distinct('c.book_id')
+        ->count();
+        return $lendings;
+    }
+
+    //hány példány van nálam?
+    public function activeLendingsCount(){
+        $user = Auth::user();
+        $lendings = DB::table("lendings as l")
+        ->where('user_id', $user->id)
+        ->whereNull("end")
+        ->count();
+        return $lendings;
+    }
+
+    //Milyen könyvek vannak nálam?
     public function activeLendingsData(){
         $user = Auth::user();
-        $lendings = DB::table("lendinds as l")
-        ->join('copies as c','l.copy_id', '=', 'c.copy_id')
-        ->join('books as b','b.book_id', '=', 'c.book_id')
-        ->select('b.book_id', 'author','title')
-        ->where('user_id',$user->id)
+        $lendings = DB::table("lendings as l")
+        ->select('b.book_id', 'author', 'title')
+        ->join('copies as c', 'l.copy_id', '=', 'c.copy_id')
+        ->join('books as b', 'c.book_id', '=', 'b.book_id')
+        ->where('user_id', $user->id)
         ->whereNull("end")
         ->groupBy('b.book_id')
-       // ->having(count('*')>2)
         ->get();
         return $lendings;
     }
