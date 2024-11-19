@@ -47,19 +47,19 @@ class User extends Authenticatable
         ];
     }
 
-    public function isAdmin()  {  //!!!!!!!!!!!!!
+    /* public function isAdmin()  {  //!!!!!!!!!!!!!
         return $this->role === 0;
     }
     public function isLibrarian()  {  //!!!!!!!!!!!!!
-        return $this->role === 1;
+        return $this->role < 2;
     }
     public function isWarehouseman()  {  //!!!!!!!!!!!!!
-        return $this->role === 2;
-    }
-    public function isUser()  {  //!!!!!!!!!!!!!
+        return $this->role < 3;
+    } */
+/*     public function isUser()  {  ez nem kell, mert ez lesz az auth:s
         return $this->role === 3;
     }
-
+ */
     public function lendings()
         {  
             //kapcsolat iránya, paraméterek sorrendje: model, honnan, hová

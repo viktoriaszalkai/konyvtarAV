@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lending;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LendingController extends Controller
 {
@@ -63,6 +64,22 @@ class LendingController extends Controller
         return Lending::with('copies')
         ->where('user_id','=',$user->id)
         ->get();
+    }
+
+    //Milyen könyvek vannak nálam
+
+    public function activeLendingsData(){
+        $user = Auth::user();
+        $lendings = DB::table("lendinds as l")
+        ->join('copies as c','l.copy_id', '=', 'c.copy_id')
+        ->join('books as b','b.book_id', '=', 'c.book_id')
+        ->select('b.book_id', 'author','title')
+        ->where('user_id',$user->id)
+        ->whereNull("end")
+        ->groupBy('b.book_id')
+       // ->having(count('*')>2)
+        ->get();
+        return $lendings;
     }
 
 }

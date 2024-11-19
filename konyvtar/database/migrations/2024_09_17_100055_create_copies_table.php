@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('book_id')->references('book_id')->on('books');
             //puha: 0, kemény: 1
             $table->boolean('hardcovered')->default(1);
-            $table->year('publication')->default('2000');
+            $table->year('publication')->default('2002');
             $table->smallInteger('status')->default(0);
             $table->timestamps();
         });
